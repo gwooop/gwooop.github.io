@@ -3,7 +3,7 @@ title: "Second posting"
 date: 2019-12-04 19:58:28 -0400
 categories: gwooop update
 ---
-## Table of Contents
+# Table of Contents
 
   1. [Types](#types)
   1. [References](#references)
