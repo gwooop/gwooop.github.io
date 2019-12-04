@@ -1,5 +1,5 @@
 ---
-title: "Welcome to Jekyll!"
+title: "First posting"
 date: 2019-12-04 18:28:28 -0400
-categories: jekyll update
+categories: gwooop update
 ---
