@@ -18,11 +18,14 @@ categories: gwooop update
   1. [Iterators and Generators](#iterators-and-generators)
   1. [Properties](#properties)
   
-    ```python
-    const foo = 1;
-    let bar = foo;
 
-    bar = 9;
 
-    console.log(foo, bar); // => 1, 9
-    ```
+```python  
+
+const foo = 1;
+let bar = foo;
+
+bar = 9;
+
+console.log(foo, bar); // => 1, 9
+```
