@@ -21,7 +21,6 @@ categories: gwooop update
 
 
 ```python  
-
 const foo = 1;
 let bar = foo;
 
