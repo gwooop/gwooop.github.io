@@ -1,0 +1,77 @@
+---
+title: "Python D5"
+date: 2019-12-09 20:40:28
+categories: python
+---
+
+# Medici Education Python Day5
+
+## Table of Contents
+  1. [BeautifulSoup](#beautifulsoup)
+
+  
+## BeautifulSoup
+
+<a name="beautifulsoup"></a><a name="1.1"></a>
+  - [1.1](#beautifulsoup) **BeautifulSoup 소개**  
+    + HTML과 XML 파일로부터 데이터를 뽑아내기 위한 파이썬 라이브러리  
+    + 터미널에서 pip를 사용하여 설치
+    
+```python
+# pip install beautifulsoup4
+```
+
+<a name="beautifulsoup--use"></a><a name="1.2"></a>
+  - [1.1](#beautifulsoup--use) **BeautifulSoup 사용 하기**
+    + findAll()과 find()는 가장 자주 쓰이는 함수 입니다.
+    + HTML 페이지에서 원하는 태그를 쉽게 필터링 할 수 있습니다.
+    
+```python
+import bs4
+
+html = """
+<!DOCTYPE html>
+<html>
+   <head>
+       <title>웹 크롤링 실습</title>
+   </head>
+<body>
+   <h1 class="green">1. 웹 크롤링 실습 페이지 입니다.</h1>
+   <h1 class="red">2. 웹 크롤링 실습 페이지 입니다.</h1>
+   <p>웹 크롤링 실습 p 태그 입니다.</p>
+</body>
+</html>"""
+
+bs4_object = bs4.BeautifulSoup(html, "html.parser")
+print(bs4_object.find("h1"))                            # <h1 class="green">1. 웹 크롤링 실습 페이지 입니다.</h1>
+print(bs4_object.find("h1").text)                       # 1. 웹 크롤링 실습 페이지 입니다.
+h1_tags = bs4_object.findAll("h1")
+print(h1_tags)                                          # [<h1 class="green">1. 웹 크롤링 실습 페이지 입니다.</h1>, <h1 class="red">2. 웹 크롤링 실습 페이지 입니다.</h1>]
+for tag in h1_tags:
+    print(tag.text)                                     # 1. 웹 크롤링 실습 페이지 입니다.
+                                                        # 2. 웹 크롤링 실습 페이지 입니다.
+print(h1_tags[0])                                       # <h1 class="green">1. 웹 크롤링 실습 페이지 입니다.</h1>
+print(h1_tags[0].text)                                  # 1. 웹 크롤링 실습 페이지 입니다.
+
+# 클래스가 red인 h1 태그 찾기
+h1_tag_red = bs4_object.find("h1", {"class":"red"})
+print(h1_tag_red)                                           # <h1 class="red">2. 웹 크롤링 실습 페이지 입니다.</h1>
+print(h1_tag_red.text)                                      # 2. 웹 크롤링 실습 페이지 입니다.
+
+# 클래스가 red거나 green인 h1 태그 찾기
+h1_tag_red_green = bs4_object.find("h1", {"class": {"red", "green"}})
+print(h1_tag_red_green)                                     # <h1 class="green">1. 웹 크롤링 실습 페이지 입니다.</h1>
+print(h1_tag_red_green.text)                                # 1. 웹 크롤링 실습 페이지 입니다.
+
+
+h1_tags_red_green = bs4_object.findAll("h1", {"class": {"red", "green"}})
+print(h1_tags_red_green)                                    # [<h1 class="green">1. 웹 크롤링 실습 페이지 입니다.</h1>, <h1 class="red">2. 웹 크롤링 실습 페이지 입니다.</h1>]
+for tag in h1_tags_red_green:
+    print(tag.text)                                         # 1. 웹 크롤링 실습 페이지 입니다.
+                                                            # 2. 웹 크롤링 실습 페이지 입니다.    
+```
+    
+
+
+
+
