@@ -8,6 +8,7 @@ categories: python
 
 ## Table of Contents
   1. [BeautifulSoup](#beautifulsoup)
+  1. [웹 크롤링](#웹-크롤링)
 
   
 ## BeautifulSoup
@@ -22,7 +23,7 @@ categories: python
 ```
 
 <a name="beautifulsoup--use"></a><a name="1.2"></a>
-  - [1.1](#beautifulsoup--use) **BeautifulSoup 사용 하기**
+  - [1.2](#beautifulsoup--use) **BeautifulSoup 사용 하기**
     + findAll()과 find()는 가장 자주 쓰이는 함수 입니다.
     + HTML 페이지에서 원하는 태그를 쉽게 필터링 할 수 있습니다.
     
@@ -71,7 +72,31 @@ for tag in h1_tags_red_green:
                                                             # 2. 웹 크롤링 실습 페이지 입니다.    
 ```
     
+**[⬆ back to top](#table-of-contents)**
 
+## 웹 크롤링
+
+<a name="weather-crawling"></a><a name="2.1"></a>
+  - [2.1](#weather-crawling) **네이버 홈페이지 크롤링 하기**  
+  
+```python
+import requests
+import bs4
+
+html = requests.get("https://www.naver.com/")
+print(html.status_code)
+if html.status_code == 200:
+    print("정상페이지")
+    print("*"*50)
+    bs4_object = bs4.BeautifulSoup(html.text, "html.parser")
+    # print(bs4_object)
+    li_tags = bs4_object.findAll("li", {"class":"ca_item"})
+    for tag in li_tags:
+        print(tag.text)
+else:
+    print("오류페이지")
+```
+![python-d5-01](https://user-images.githubusercontent.com/50984551/70427436-0e090c00-1ab8-11ea-838d-ce0ac46589f0.png)
 
 
 
